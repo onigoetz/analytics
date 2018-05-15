@@ -56,6 +56,7 @@ if (currentModule != "analytics.js") {
 }
 
 module.exports = {
+    mode: "production",
     devtool: "source-map",
     entry: './lib/index.js',
     output: {
@@ -88,8 +89,8 @@ module.exports = {
             'process.env.VERSION': JSON.stringify(require(path.join(process.cwd(), 'package.json')).version)
         }),
           
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
+        //new webpack.optimize.ModuleConcatenationPlugin(),
+        //new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
         //new PrepackWebpackPlugin({})
 
     ]
