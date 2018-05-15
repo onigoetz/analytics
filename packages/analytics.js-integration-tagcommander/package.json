@@ -1,0 +1,20 @@
+{
+  "name": "@segment/analytics.js-integration-tagcommander",
+  "description": "The TagCommander integration.",
+  "version": "2.0.0",
+  "keywords": [
+    "analytics.js",
+    "analytics.js-integration",
+    "segment",
+    "tagcommander"
+  ],
+  "main": "dist/bundle.min.js",
+  "scripts": {
+    "build": "../../node_modules/.bin/webpack --config ../../webpack.config.js"
+  },
+  "dependencies": {
+    "debug": "^2.6.8",
+    "global-queue": "^1.0.1",
+    "lodash": "^4.17.4"
+  }
+}
