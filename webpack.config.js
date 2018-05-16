@@ -88,7 +88,7 @@ module.exports = {
                 "@swissquote/swissquote",
                 {
                   environment: "production",
-                  deduplicateHelpers: true,
+                  deduplicateHelpers: false,
                   useESModules: true
                 }
               ]
