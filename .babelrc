@@ -1,13 +1,12 @@
 {
   "presets": [
     [
-      "es2015",
+      "@swissquote/swissquote",
       {
-        "modules": false
+        "environment": "production",
+        "deduplicateHelpers": true,
+        "useESModules": true
       }
     ]
-  ],
-  "plugins": [
-    "transform-class-properties"
   ]
 }

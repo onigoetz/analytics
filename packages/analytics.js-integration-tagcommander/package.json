@@ -8,7 +8,7 @@
     "segment",
     "tagcommander"
   ],
-  "main": "dist/bundle.min.js",
+  "main": "dist/analytics-tagcommander.min.js",
   "scripts": {
     "build": "../../node_modules/.bin/webpack --config ../../webpack.config.js"
   },

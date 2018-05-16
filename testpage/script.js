@@ -1,7 +1,7 @@
 (function(window, document) {
   var integrations = [
     "analytics.min.js",
-    "piwik-analytics.min.js"
+    "analytics-piwik.min.js"
     //'google-tag-manager.min.js',
     //'tagcommander.min.js'
   ];
