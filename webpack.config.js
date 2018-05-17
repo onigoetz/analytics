@@ -29,7 +29,6 @@ const aliased = [
   "@segment/is-meta",
   "@segment/prevent-default",
   "@ndhoule/map",
-  "@ndhoule/defaults",
   "@ndhoule/foldl",
   "@ndhoule/after",
   "@ndhoule/each",
