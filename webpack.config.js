@@ -107,9 +107,5 @@ module.exports = {
         require(path.join(process.cwd(), "package.json")).version
       )
     })
-
-    //new webpack.optimize.ModuleConcatenationPlugin(),
-    //new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
-    //new PrepackWebpackPlugin({})
   ]
 };
