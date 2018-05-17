@@ -79,7 +79,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        //exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules|debug\/index.js|next-tick\/index.js/,
         use: {
           loader: "babel-loader",
           options: {
@@ -88,8 +88,9 @@ module.exports = {
                 "@swissquote/swissquote",
                 {
                   environment: "production",
-                  deduplicateHelpers: false,
-                  useESModules: true
+                  deduplicateHelpers: true,
+                  useESModules: true,
+                  browsers: "> 0.25%, Firefox ESR, Edge >= 13, Safari >= 7.1, iOS >= 7.1, Chrome >= 32, Firefox >= 24, Opera >= 24, IE >= 9"
                 }
               ]
             ]
