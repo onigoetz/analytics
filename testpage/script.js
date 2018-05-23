@@ -1,15 +1,15 @@
 (function(window, document) {
   var integrations = [
     "analytics.min.js",
-    "analytics-piwik.min.js"
-    //'google-tag-manager.min.js',
-    //'tagcommander.min.js'
+    "analytics-piwik.min.js",
+    //'analytics-google-tag-manager.min.js',
+    'analytics-tagcommander.min.js'
   ];
 
   var configuration = {
-    Piwik: { url: "https://www.swissquote.ch/stats/", siteId: 99 }
+    Piwik: { url: "https://www.swissquote.ch/stats/", siteId: 99 },
     //"Google Tag Manager": { containerId: "GTM-WZF46K" },
-    //"Tag Commander": {siteId: 3551},
+    "Tag Commander": {siteId: 3551},
   };
 
   //var basePath = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'analytics.swissquote.ch/' + integration;

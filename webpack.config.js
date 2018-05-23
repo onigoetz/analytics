@@ -49,13 +49,6 @@ aliased.forEach(dep => {
   );
 });
 
-const externals = {};
-
-// Use the debug module directly from analytics.js
-if (currentModule != "analytics.js") {
-  externals.debug = "analyticsImpl.createDebug";
-}
-
 module.exports = {
   mode: "production",
   devtool: "source-map",
@@ -64,7 +57,6 @@ module.exports = {
     filename: path.basename(process.cwd()).replace("-integration", "").replace(".js", "") + ".min.js",
     path: path.resolve(process.cwd(), "dist")
   },
-  externals: externals,
   resolve: {
     alias: alias
   },
