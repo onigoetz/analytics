@@ -13,9 +13,7 @@ var globOpts = {
   ignore: ["**/node_modules/**"]
 };
 
-const alias = {
-  lodash: path.join(process.cwd(), "node_modules/lodash")
-};
+const alias = {};
 
 // Deduplicate modules
 glob.sync("packages/**/package.json", globOpts).forEach(result => {
