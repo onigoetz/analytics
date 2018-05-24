@@ -1,8 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const glob = require("glob");
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
-const PrepackWebpackPlugin = require("prepack-webpack-plugin").default;
+const StatsPlugin = require('stats-webpack-plugin');
 
 const currentModule = path.basename(process.cwd());
 
@@ -25,13 +24,13 @@ glob.sync("packages/**/package.json", globOpts).forEach(result => {
 const aliased = [
   "@segment/isodate",
   "@segment/is-meta",
-  "@segment/prevent-default",
   "@ndhoule/after",
   "@ndhoule/clone",
   "is",
   "next-tick",
   "component-event",
   "component-emitter",
+  "component-cookie",
   "component-type",
   "component-bind",
   "bind-all"
@@ -89,6 +88,12 @@ module.exports = {
       "process.env.VERSION": JSON.stringify(
         require(path.join(process.cwd(), "package.json")).version
       )
+    }),
+    new StatsPlugin('profile.json', {
+      chunkModules: true
     })
-  ]
+  ],
+  optimization: {
+    //concatenateModules: false
+  }
 };

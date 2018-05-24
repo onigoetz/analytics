@@ -10,7 +10,7 @@
   ],
   "main": "dist/analytics-tagcommander.min.js",
   "scripts": {
-    "build": "../../node_modules/.bin/webpack --config ../../webpack.config.js"
+    "build": "../../node_modules/.bin/webpack --config ../../webpack.config.js --display-optimization-bailout --profile"
   },
   "dependencies": {
     "debug": "^2.6.8",
