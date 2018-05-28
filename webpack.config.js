@@ -30,7 +30,6 @@ const aliased = [
   "next-tick",
   "component-event",
   "component-emitter",
-  "component-cookie",
   "component-type",
   "component-bind",
   "bind-all"

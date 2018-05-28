@@ -45,7 +45,7 @@ function bytesToUuid(buf) {
             uuid += '-';
         }
 
-        uuid += bth[buf[i]];
+        uuid += byteToHex[buf[i]];
     }
    return uuid;
 }
