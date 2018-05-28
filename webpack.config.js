@@ -25,12 +25,10 @@ const aliased = [
   "@segment/isodate",
   "@segment/is-meta",
   "@ndhoule/after",
-  "@ndhoule/clone",
   "is",
   "next-tick",
   "component-event",
   "component-emitter",
-  "component-type",
   "component-bind",
   "bind-all"
 ];
