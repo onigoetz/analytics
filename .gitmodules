@@ -1,0 +1,21 @@
+[submodule "packages/analytics.js"]
+	path = packages/analytics.js
+	url = https://github.com/onigoetz/analytics.js
+[submodule "packages/analytics.js-integration"]
+	path = packages/analytics.js-integration
+	url = https://github.com/onigoetz/analytics.js-integration
+[submodule "packages/analytics.js-core"]
+	path = packages/analytics.js-core
+	url = https://github.com/onigoetz/analytics.js-core
+[submodule "packages/analytics.js-integration-google-tag-manager"]
+	path = packages/analytics.js-integration-google-tag-manager
+	url = https://github.com/onigoetz/analytics.js-integration-google-tag-manager
+[submodule "packages/analytics.js-integration-piwik"]
+	path = packages/analytics.js-integration-piwik
+	url = https://github.com/onigoetz/analytics.js-integration-piwik
+[submodule "packages/component-querystring"]
+	path = packages/component-querystring
+	url = https://github.com/onigoetz/querystring
+[submodule "packages/isodate-traverse"]
+	path = packages/isodate-traverse
+	url = https://github.com/onigoetz/isodate-traverse
