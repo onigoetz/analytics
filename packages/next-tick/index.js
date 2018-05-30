@@ -32,7 +32,7 @@ byObserver = function (Observer) {
 	};
 };
 
-module.exports = (function () {
+export default (function () {
 	// MutationObserver=
 	if ((typeof document === 'object') && document) {
 		if (typeof MutationObserver === 'function') {
