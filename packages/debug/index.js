@@ -14,7 +14,7 @@ function coerce(val) {
     return (val instanceof Error) ? val.stack || val.message : val;
 }
 
-module.exports = function debug(name) {
+export default function debug(name) {
     return function () {
         if (!enabled) return;
 
@@ -52,5 +52,5 @@ module.exports = function debug(name) {
     };
 }
 
-module.exports.enable = function() { enabled = true };
-module.exports.disable= function() { enabled = false };
+export function enable() { enabled = true };
+export function disable() { enabled = false };
