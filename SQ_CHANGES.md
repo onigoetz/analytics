@@ -1,5 +1,9 @@
 # Features Changed in the Swissquote version
 
+## Removed features
+
+- ISO date strings are no longer automatically converted to dates (in facades)
+
 ## Removed APIS
 
 - analytics.pageview (old alias of analytics.page)
