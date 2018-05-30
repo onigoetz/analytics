@@ -12,6 +12,10 @@ export function number(obj) {
   return typeof obj === "number";
 }
 
+export function regex(o) {
+  return toStr.call(value) === '[object RegExp]';
+}
+
 // load-iframe/index.js
 // analytics.js-core/lib/analytics.js
 const fnRegex = /^\[object (?:Generator|Async|)Function\]$/;
