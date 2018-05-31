@@ -22,14 +22,10 @@ glob.sync("packages/**/package.json", globOpts).forEach(result => {
 });
 
 const aliased = [
-  "@segment/isodate",
   "@segment/is-meta",
-  "@ndhoule/after",
   "is",
   "next-tick",
-  "component-event",
   "component-emitter",
-  "component-bind",
   "bind-all"
 ];
 
