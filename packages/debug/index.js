@@ -1,56 +1,63 @@
-var enabled = false;
+let enabled = false;
 
 const formatters = {
-    j: function (v) {
-        try {
-            return JSON.stringify(v);
-        } catch (err) {
-            return '[UnexpectedJSONParseError]: ' + err.message;
-        }
+  j(v) {
+    try {
+      return JSON.stringify(v);
+    } catch (err) {
+      return `[UnexpectedJSONParseError]: ${err.message}`;
     }
-}
+  }
+};
 
 function coerce(val) {
-    return (val instanceof Error) ? val.stack || val.message : val;
+  return val instanceof Error ? val.stack || val.message : val;
 }
 
 export default function debug(name) {
-    return function () {
-        if (!enabled) return;
+  return function(...args) {
+    if (!enabled) {
+      return false;
+    }
 
-        // turn the `arguments` into a proper Array
-        var args = new Array(arguments.length);
-        for (var i = 0; i < arguments.length; i++) {
-            args[i] = arguments[i];
-        }
+    args[0] = `[${name}] ${coerce(args[0])}`;
 
-        args[0] = `[${name}] ${coerce(args[0])}`;
+    // apply any `formatters` transformations
+    let index = 0;
+    args[0] = args[0].replace(/%([a-zA-Z%])/g, (match, format) => {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === "%%") {
+        return match;
+      }
+      let matched = match;
+      index++;
+      const formatter = formatters[format];
+      if (typeof formatter === "function") {
+        const val = args[index];
+        matched = formatter.call(self, val);
 
-        // apply any `formatters` transformations
-        var index = 0;
-        args[0] = args[0].replace(/%([a-zA-Z%])/g, function (match, format) {
-            // if we encounter an escaped % then don't increase the array index
-            if (match === '%%') return match;
-            index++;
-            var formatter = formatters[format];
-            if ('function' === typeof formatter) {
-                var val = args[index];
-                match = formatter.call(self, val);
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return matched;
+    });
 
-                // now we need to remove `args[index]` since it's inlined in the `format`
-                args.splice(index, 1);
-                index--;
-            }
-            return match;
-        });
-
-        // this hackery is required for IE8/9, where
-        // the `console.log` function doesn't have 'apply'
-        return typeof console === 'object'
-            && console.log
-            && Function.prototype.apply.call(console.log, console, args);
-    };
+    // this hackery is required for IE8/9, where
+    // the `console.log` function doesn't have 'apply'
+    /* eslint-disable no-console */
+    return (
+      typeof console === "object" &&
+      console.log &&
+      Function.prototype.apply.call(console.log, console, args)
+    );
+    /* eslint-enable no-console */
+  };
 }
 
-export function enable() { enabled = true };
-export function disable() { enabled = false };
+export function enable() {
+  enabled = true;
+}
+export function disable() {
+  enabled = false;
+}

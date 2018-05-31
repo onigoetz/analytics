@@ -2,7 +2,41 @@
  * Module dependencies.
  */
 
-import cookie from 'component-cookie';
+import cookie from "component-cookie";
+
+/**
+ * Levels returns all levels of the given url.
+ *
+ * @param {string} url The URL to get the levels from
+ * @return {Array}
+ * @api public
+ */
+function getLevels(url) {
+  const a = document.createElement("a");
+  a.href = url;
+
+  const host = a.hostname || location.hostname;
+  const parts = host.split(".");
+  const last = parts[parts.length - 1];
+  const levels = [];
+
+  // Ip address.
+  if (parts.length === 4 && last === parseInt(last, 10)) {
+    return levels;
+  }
+
+  // Localhost.
+  if (parts.length <= 1) {
+    return levels;
+  }
+
+  // Create levels.
+  for (let i = parts.length - 2; i >= 0; --i) {
+    levels.push(parts.slice(i).join("."));
+  }
+
+  return levels;
+}
 
 /**
  * Get the top domain.
@@ -28,59 +62,25 @@ import cookie from 'component-cookie';
  *      domain('http://segment.io/baz');
  *      // => 'segment.io'
  *
- * @param {string} url
+ * @param {string} url The URL to find the top domain from
  * @return {string}
  * @api public
  */
 export default function domain(url) {
-  var levels = getLevels(url);
+  const levels = getLevels(url);
 
   // Lookup the real top level one.
-  for (var i = 0; i < levels.length; ++i) {
-    var cname = '__tld__';
-    var domain = levels[i];
-    var opts = { domain: '.' + domain };
+  for (let i = 0; i < levels.length; ++i) {
+    const cname = "__tld__";
+    const dom = levels[i];
+    const opts = { domain: `.${dom}` };
 
-    cookie(cname, 1, opts);
-    if (cookie(cname)) {
-      cookie(cname, null, opts);
-      return domain;
+    cookie.set(cname, 1, opts);
+    if (cookie.get(cname)) {
+      cookie.remove(cname, opts);
+      return dom;
     }
   }
 
-  return '';
+  return "";
 }
-
-/**
- * Levels returns all levels of the given url.
- *
- * @param {string} url
- * @return {Array}
- * @api public
- */
-function getLevels(url) {
-  var a = document.createElement('a');
-  a.href = url;
-
-  var host = a.hostname || location.hostname;
-  var parts = host.split('.');
-  var last = parts[parts.length - 1];
-  var levels = [];
-
-  // Ip address.
-  if (parts.length === 4 && last === parseInt(last, 10)) {
-    return levels;
-  }
-
-  // Localhost.
-  if (parts.length <= 1) {
-    return levels;
-  }
-
-  // Create levels.
-  for (var i = parts.length - 2; i >= 0; --i) {
-    levels.push(parts.slice(i).join('.'));
-  }
-
-  return levels;
-};

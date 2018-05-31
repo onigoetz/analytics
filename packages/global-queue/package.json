@@ -1,7 +1,7 @@
 {
-    "name": "global-queue",
-    "version": "1.0.1",
-    "dependencies": {
-        "debug": "^2.6.8"
-    }
+  "name": "global-queue",
+  "version": "1.0.1",
+  "dependencies": {
+    "debug": "^2.6.8"
+  }
 }

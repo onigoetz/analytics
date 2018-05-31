@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-import debug from 'debug';
+import debug from "debug";
 
 /**
  * Generate a global queue pushing method with `name`.
@@ -13,16 +13,19 @@ import debug from 'debug';
  * @return {Function}
  */
 
-export default function generate (name, options) {
-  var log = debug('global-queue:' + name);
-  options = options || {};
+export default function generate(name, options = {}) {
+  const log = debug(`global-queue:${name}`);
 
-  return function (args) {
-    args = [].slice.call(arguments);
-    window[name] || (window[name] = []);
-    log('%o', args);
-    options.wrap === false
-      ? window[name].push.apply(window[name], args)
-      : window[name].push(args);
+  return function(...args) {
+    if (!window[name]) {
+      window[name] = [];
+    }
+
+    log("%o", args);
+    if (options.wrap === false) {
+      window[name].push(...args);
+    } else {
+      window[name].push(args);
+    }
   };
 }

@@ -1,0 +1,6 @@
+{
+    "extends": "plugin:@swissquote/swissquote/recommended",
+    "plugins": [
+        "@swissquote/swissquote"
+    ]
+}
