@@ -3,13 +3,13 @@
     "analytics.min.js",
     "analytics-piwik.min.js",
     //'analytics-google-tag-manager.min.js',
-    'analytics-tagcommander.min.js'
+    'analytics-tag-commander.min.js'
   ];
 
   var configuration = {
-    Piwik: { url: "https://www.swissquote.ch/stats/", siteId: 99 },
+    piwik: { url: "https://www.swissquote.ch/stats/", siteId: 99 },
     //"Google Tag Manager": { containerId: "GTM-WZF46K" },
-    "Tag Commander": {siteId: 3551},
+    "tag-commander": {siteId: 3551},
   };
 
   //var basePath = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'analytics.swissquote.ch/' + integration;

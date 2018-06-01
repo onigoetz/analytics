@@ -10,7 +10,7 @@ analytics.use(() => {
    */
 
   const TagCo = analytics
-    .integration("Tag Commander")
+    .integration("tag-commander")
     .global("dataLayer")
     .global("google_tag_manager")
     .option("containerId", "")

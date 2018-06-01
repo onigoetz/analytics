@@ -33,12 +33,12 @@ cp -f "dist/analytics-piwik.min.js.map" "$DIR/dist/analytics-piwik.min.js.map"
 cp -f "dist/profile.json" "$DIR/dist/analytics-piwik-profile.json"
 
 #=> @segment/analytics.js-integration-tagcommander [ '@segment/analytics.js-core' ]
-echo -e "${RED}Building @segment/analytics.js-integration-tagcommander${NC}\n"
-cd "$DIR/packages/analytics.js-integration-tagcommander"
+echo -e "${RED}Building @segment/analytics.js-integration-tag-commander${NC}\n"
+cd "$DIR/packages/analytics.js-integration-tag-commander"
 npm run build
-cp -f "dist/analytics-tagcommander.min.js" "$DIR/dist/analytics-tagcommander.min.js"
-cp -f "dist/analytics-tagcommander.min.js.map" "$DIR/dist/analytics-tagcommander.min.js.map"
-cp -f "dist/profile.json" "$DIR/dist/analytics-tagcommander-profile.json"
+cp -f "dist/analytics-tag-commander.min.js" "$DIR/dist/analytics-tag-commander.min.js"
+cp -f "dist/analytics-tag-commander.min.js.map" "$DIR/dist/analytics-tag-commander.min.js.map"
+cp -f "dist/profile.json" "$DIR/dist/analytics-tag-commander-profile.json"
 
 #=> script
 cd "$DIR"
