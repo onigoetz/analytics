@@ -6,7 +6,9 @@
 
 ## Removed APIS
 
-- analytics.pageview (old alias of analytics.page)
+- analytics.pageview (legacy alias of analytics.page)
+- analytics.trackSubmit (legacy alias of analytics.trackForm)
+- analytics.trackClick (legacy alias of analytics.trackLink)
 - analytics.alias
 - analytics.group
 

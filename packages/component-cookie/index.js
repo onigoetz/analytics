@@ -23,6 +23,10 @@ api.set = function(key, value, attributes) {
     attributes.expires = new Date(+new Date() + attributes.maxage);
   }
 
+  if (typeof attributes.expires === "number") {
+    attributes.expires = new Date(+new Date() + attributes.expires);
+  }
+
   try {
     const result = JSON.stringify(value);
     if (/^[\{\[]/.test(result)) {

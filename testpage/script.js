@@ -36,7 +36,7 @@
   // placeholders for methods in Analytics.js so that you never have
   // to wait for it to load to actually record data. The `method`
   // is stored as the first argument, so we can replay the data.
-  "trackSubmit|trackClick|trackLink|trackForm|pageview|identify|reset|group|track|ready|alias|debug|page|once|off|on|use"
+  "trackLink|trackForm|identify|reset|track|ready|alias|debug|page|once|off|on|use"
     .split("|")
     .forEach(function(method) {
       analytics[method] = function() {
