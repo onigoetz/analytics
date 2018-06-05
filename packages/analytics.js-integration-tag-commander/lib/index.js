@@ -1,3 +1,4 @@
+/* global tc_vars */
 import createDebug from "debug";
 
 import "./tagco_provided";
@@ -11,21 +12,10 @@ analytics.use(() => {
 
   const TagCo = analytics
     .integration("tag-commander")
-    .global("dataLayer")
-    .global("google_tag_manager")
-    .option("containerId", "")
+    .global("tc_vars")
     .option("siteId", "")
-    .option("environment", "")
     .option("trackNamedPages", true)
-    .option("trackCategorizedPages", true)
-    .tag(
-      "no-env",
-      '<script src="//www.googletagmanager.com/gtm.js?id={{ containerId }}&l=dataLayer">'
-    )
-    .tag(
-      "with-env",
-      '<script src="//www.googletagmanager.com/gtm.js?id={{ containerId }}&l=dataLayer&gtm_preview={{ environment }}">'
-    );
+    .option("trackCategorizedPages", true);
 
   /**
    * Initialize.
@@ -35,7 +25,14 @@ analytics.use(() => {
    * @api public
    */
 
-  TagCo.prototype.initialize = function() {};
+  TagCo.prototype.initialize = function() {
+    window.tc_vars = window.tc_vars || {};
+
+    // `this.ready()` must be called when the integration is ready,
+    // otherwise all calls will be queued. until it is ready.
+    //this.load(this.ready);
+    this.ready();
+  };
 
   /**
    * Loaded?
@@ -46,6 +43,7 @@ analytics.use(() => {
 
   TagCo.prototype.loaded = function() {
     return true;
+    // This would be needed if an external script needs to be loaded
     //return !!(window.dataLayer && Array.prototype.push !== window.dataLayer.push);
   };
 
@@ -57,6 +55,9 @@ analytics.use(() => {
    */
 
   TagCo.prototype.page = function(page) {
+    debug("Called page() on TagCommander integration");
+    window.tc_vars.page_name = page.fullName();
+
     /*var category = page.category();
         var name = page.fullName();
         var opts = this.options;
@@ -87,6 +88,12 @@ analytics.use(() => {
    */
 
   TagCo.prototype.track = function(track) {
+    debug("Called track() on TagCommander integration");
+    //tc_vars.qqch = "";
+
+    //tc_events_global(var1, var2, var3)
+
+
     /*var props = track.properties();
         var userId = this.analytics.user().id();
         var anonymousId = this.analytics.user().anonymousId();
