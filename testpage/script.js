@@ -11,7 +11,7 @@
     //"Google Tag Manager": { containerId: "GTM-WZF46K" },
     "tag-commander": {
       containerId: 20,
-      url: "https://v4.commandersact.com/utils/downloadv2.php?params=zwxrTmVAoyfEcv5MuJv8YUv26fUiyLtDrr3lTpX%2BzoFEITZdWz%2B5lqsovd0qs%2FcL%2BoMnrti%2FjcHJSqRleLm%2Bhw%3D%3D"
+      url: "http://cdn.tagcommander.com/4206/tc_SwissquoteSandbox_20.js"
     }
   };
 
