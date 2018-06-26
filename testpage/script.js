@@ -3,13 +3,16 @@
     "analytics.min.js",
     "analytics-piwik.min.js",
     //'analytics-google-tag-manager.min.js',
-    'analytics-tag-commander.min.js'
+    "analytics-tag-commander.min.js"
   ];
 
   var configuration = {
     piwik: { url: "https://www.swissquote.ch/stats/", siteId: 99 },
     //"Google Tag Manager": { containerId: "GTM-WZF46K" },
-    "tag-commander": {siteId: 3551},
+    "tag-commander": {
+      containerId: 20,
+      url: "http://cdn.tagcommander.com/4206/tc_SwissquoteSandbox_20.js"
+    }
   };
 
   //var basePath = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'analytics.swissquote.ch/' + integration;
@@ -22,7 +25,7 @@
 
   // Count the integrations to load
   var toLoad = 0;
-  
+
   // Get first script element
   var first = document.getElementsByTagName("script")[0];
 
