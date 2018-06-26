@@ -1,7 +1,5 @@
-import createDebug from "debug";
 
-const debug = createDebug("tagcommander");
-
+/* global analytics */
 analytics.use(() => {
   /**
    * Expose `TagCo`.
@@ -9,6 +7,7 @@ analytics.use(() => {
 
   const TagCo = analytics
     .integration("tag-commander")
+    .global("tc_vars")
     .tag(opt => ({ type: "script", attrs: { src: opt.url } }));
 
   /**
@@ -20,6 +19,7 @@ analytics.use(() => {
    */
 
   TagCo.prototype.initialize = function() {
+    window.tc_vars = window.tc_vars || {};
     this.load(this.ready);
   };
 
@@ -31,7 +31,7 @@ analytics.use(() => {
    */
 
   TagCo.prototype.loaded = function() {
-    return !!window[`tc_events_${this.options.containerId}`];
+    return !!window[`tc_events_${this.options.containerId}`] && !!window.tC;
   };
 
   /**
@@ -42,10 +42,8 @@ analytics.use(() => {
    */
 
   TagCo.prototype.page = function(page) {
-    debug("Called page() on TagCommander integration");
-    window[`tc_events_${this.options.containerId}`](this, "PAGEVIEW", {
-      page_name: page.name()
-    });
+    window.tc_vars.page_name = page.name();
+    window.tC.container.reload({events: {page: [{}, {}]}});
   };
 
   /**
