@@ -9,10 +9,18 @@
   var configuration = {
     piwik: { url: "https://www.swissquote.ch/stats/", siteId: 99 },
     //"Google Tag Manager": { containerId: "GTM-WZF46K" },
-    "tag-commander": {
+    "tag-commander[0]": {
       containerId: 20,
       url: "http://cdn.tagcommander.com/4206/tc_SwissquoteSandbox_20.js"
+    },
+    "tag-commander[1]": {
+      containerId: 21,
+      url: "http://cdn.tagcommander.com/4206/tc_SwissquoteSandbox_21.js"
     }
+    /*"tag-commander": {
+      containerId: 21,
+      url: "http://cdn.tagcommander.com/4206/tc_SwissquoteSandbox_21.js"
+    }*/
   };
 
   //var basePath = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'analytics.swissquote.ch/' + integration;

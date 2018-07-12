@@ -31,7 +31,7 @@ analytics.use(() => {
    */
 
   TagCo.prototype.loaded = function() {
-    return !!window[`tc_events_${this.options.containerId}`] && !!window.tC;
+    return !!window.tC;
   };
 
   /**
@@ -49,18 +49,20 @@ analytics.use(() => {
   /**
    * Track.
    *
-   * https://developers.google.com/tag-manager/devguide#events
+   * The tracking is only available if the method tc_events_<containerId> is available
    *
    * @api public
    * @param {Track} track
    */
 
   TagCo.prototype.track = function(track) {
-    window[`tc_events_${this.options.containerId}`](this, track.action(), {
-      name: track.name(),
-      value: track.value(),
-      category: track.category()
-    });
+    if (!!window[`tc_events_${this.options.containerId}`]) {
+      window[`tc_events_${this.options.containerId}`](this, track.action(), {
+        name: track.name(),
+        value: track.value(),
+        category: track.category()
+      });
+    }
   };
 
   return TagCo;
