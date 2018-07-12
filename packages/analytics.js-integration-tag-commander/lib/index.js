@@ -49,14 +49,15 @@ analytics.use(() => {
    */
 
   TagCo.prototype.track = function(track) {
-    if (!!window[`tc_events_${this.options.containerId}`]) {
-      window[`tc_events_${this.options.containerId}`](this, track.action(), {
-        name: track.name(),
-        value: track.value(),
-        category: track.category()
-      });
+    if (!window[`tc_events_${this.options.containerId}`]) {
+      return;
     }
 
+    window[`tc_events_${this.options.containerId}`](this, track.action(), {
+      name: track.name(),
+      value: track.value(),
+      category: track.category()
+    });
   };
 
   return TagCo;

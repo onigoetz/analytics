@@ -17,10 +17,6 @@
       containerId: 21,
       url: "http://cdn.tagcommander.com/4206/tc_SwissquoteSandbox_21.js"
     }
-    /*"tag-commander": {
-      containerId: 21,
-      url: "http://cdn.tagcommander.com/4206/tc_SwissquoteSandbox_21.js"
-    }*/
   };
 
   //var basePath = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'analytics.swissquote.ch/' + integration;
