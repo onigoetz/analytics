@@ -8,7 +8,8 @@ analytics.use(() => {
   const TagCo = analytics
     .integration("tag-commander")
     .global("tc_vars")
-    .tag(opt => ({ type: "script", attrs: { src: opt.url } }));
+    .tag(opt => ({ type: "script", attrs: { src: opt.url } }))
+  ;
 
   /**
    * Initialize.
@@ -21,17 +22,6 @@ analytics.use(() => {
   TagCo.prototype.initialize = function() {
     window.tc_vars = window.tc_vars || {};
     this.load(this.ready);
-  };
-
-  /**
-   * Loaded?
-   *
-   * @api private
-   * @return {boolean}
-   */
-
-  TagCo.prototype.loaded = function() {
-    return !!window[`tc_events_${this.options.containerId}`] && !!window.tC;
   };
 
   /**
@@ -49,13 +39,20 @@ analytics.use(() => {
   /**
    * Track.
    *
-   * https://developers.google.com/tag-manager/devguide#events
+   * The tracking of events is only available if the method tc_events_<containerId> is available, and this
+   * availability depends on the container's configuration.
+   * Since we cannot presume in which way the container is configured, we have to test the availability
+   * of the tc_events_<containerId> method.
    *
    * @api public
    * @param {Track} track
    */
 
   TagCo.prototype.track = function(track) {
+    if (!window[`tc_events_${this.options.containerId}`]) {
+      return;
+    }
+
     window[`tc_events_${this.options.containerId}`](this, track.action(), {
       name: track.name(),
       value: track.value(),
