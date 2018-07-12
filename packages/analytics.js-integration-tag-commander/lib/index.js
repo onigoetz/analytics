@@ -8,7 +8,13 @@ analytics.use(() => {
   const TagCo = analytics
     .integration("tag-commander")
     .global("tc_vars")
-    .tag(opt => ({ type: "script", attrs: { src: opt.url } }));
+    .tag(opt => {
+      if (opt.url) {
+        return { type: "script", attrs: { src: opt.url } };
+      } else {
+        return false;
+      }
+    });
 
   /**
    * Initialize.
