@@ -16,6 +16,3 @@
 [submodule "packages/component-querystring"]
 	path = packages/component-querystring
 	url = https://github.com/onigoetz/querystring
-[submodule "packages/isodate-traverse"]
-	path = packages/isodate-traverse
-	url = https://github.com/onigoetz/isodate-traverse

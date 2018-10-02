@@ -10,4 +10,4 @@ prettier --write "packages/*/*.js" "packages/*/src/**/*.js" "packages/*/bin/**/*
 echo
 echo -e "$GREEN-- ESLint$NC"
 echo
-node node_modules/.bin/eslint --fix packages/*/*.js packages/*/src/**/*.js packages/*/bin/**/*.js packages/*/lib/**/*.js
+node node_modules/.bin/eslint --fix packages/*/*.js packages/*/lib/**/*.js

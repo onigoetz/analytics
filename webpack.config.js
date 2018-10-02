@@ -1,11 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
 const glob = require("glob");
-const StatsPlugin = require('stats-webpack-plugin');
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
-const currentModule = path.basename(process.cwd());
-
-var globOpts = {
+const globOpts = {
   cwd: __dirname,
   strict: true,
   absolute: true,
@@ -21,24 +19,6 @@ glob.sync("packages/**/package.json", globOpts).forEach(result => {
   );
 });
 
-const aliased = [
-  "@segment/is-meta",
-  "is",
-  "next-tick",
-  "component-emitter",
-  "bind-all"
-];
-
-aliased.forEach(dep => {
-  alias[dep] = path.join(
-    process.cwd(),
-    "..",
-    "analytics.js-core",
-    "node_modules",
-    dep
-  );
-});
-
 module.exports = {
   mode: "production",
   devtool: "source-map",
@@ -46,9 +26,6 @@ module.exports = {
   output: {
     filename: path.basename(process.cwd()).replace("-integration", "").replace(".js", "") + ".min.js",
     path: path.resolve(process.cwd(), "dist")
-  },
-  resolve: {
-    alias: alias
   },
   module: {
     rules: [
@@ -82,8 +59,11 @@ module.exports = {
         require(path.join(process.cwd(), "package.json")).version
       )
     }),
-    new StatsPlugin('profile.json', {
-      chunkModules: true
+    new BundleAnalyzerPlugin({
+      analyzerMode: "static",
+      openAnalyzer: false,
+      generateStatsFile: true,
+      statsFilename: "profile.json"
     })
   ],
   optimization: {

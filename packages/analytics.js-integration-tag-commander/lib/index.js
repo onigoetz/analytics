@@ -1,4 +1,3 @@
-
 /* global analytics */
 analytics.use(() => {
   /**
@@ -38,7 +37,7 @@ analytics.use(() => {
 
   TagCo.prototype.page = function(page) {
     window.tc_vars.page_name = page.name();
-    window.tC.container.reload({events: {page: [{}, {}]}});
+    window.tC.container.reload({ events: { page: [{}, {}] } });
   };
 
   /**

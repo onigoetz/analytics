@@ -17,5 +17,6 @@
     "Andrew Rhyne <rhyneandrew@gmail.com>"
   ],
   "license": "MIT",
-  "main": "./index.js"
+  "module": "./index.js",
+  "main": "./server.js"
 }
