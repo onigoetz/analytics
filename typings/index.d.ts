@@ -27,7 +27,8 @@ declare namespace SegmentAnalytics {
 
   interface AnalyticsTrackOptions {
     piwik?: {
-      customVars?: { [key: string]: any; }
+      customVars?: { [key: string]: [string, string]; }
+      goalId ?: string | string[]
     }
   }
 

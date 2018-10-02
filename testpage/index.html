@@ -4,7 +4,9 @@
 
 <script>
     analytics.debug();
-    analytics.track("myEvent", {});
+    analytics.track("myEvent", { revenue: 200 }, {
+        piwik: { goalId: ["someGoalID", "hey"] }
+    });
     analytics.page("Home");
 </script>
 </head>
